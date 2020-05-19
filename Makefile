@@ -3,17 +3,17 @@
 
 .PHONY: build-docker
 build-docker:
-	docker build . -t alpine-php7-apache2
+	docker build . -t alpine-php-apache:latest
 
 .PHONY: run-docker
 run-docker: build-docker
-	docker run --rm -d -p 80:80 --name php-webserver alpine-php7-apache2
+	docker run --rm -d -p 80:80 --name webserver alpine-php-apache:latest
 	@echo "Run following to test the webserver: "
 	@echo "curl http://localhost/index.html"
 
 .PHONY: stop-docker
 stop-docker:
-	docker stop php-webserver
+	docker stop webserver
 
 .PHONY: run-docker-compose
 run-docker-compose:

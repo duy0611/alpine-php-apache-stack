@@ -37,3 +37,28 @@ To stop docker container: `make stop-docker`
 To run docker compose with binding volumes (logs and www_data): `make run-docker-compose`
 
 To stop docker compose: `make stop-docker-compose`
+
+## Running container
+
+The container can be run as following: `docker run --rm -d -p 80:80 --name webserver alpine-php-apache:latest`
+
+Or via docker-compose:
+```
+version: '3.5'
+
+services:
+  webserver:
+    image: alpine-php-apache
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 80:80
+    volumes:
+      - ./logs/apache2/:/usr/local/apache2/logs/
+      - ./logs/php7/:/usr/local/php7/var/log/
+      - ./www_data/:/usr/local/apache2/htdocs/
+```
+
+To test the webserver, execute following: `docker exec -it webserver php -i`
+
