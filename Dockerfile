@@ -118,7 +118,7 @@ RUN mkdir -p "$PHP_PREFIX" chown www-data:www-data "$PHP_PREFIX"
 
 WORKDIR $PHP_PREFIX
 
-RUN curl -fsSL -o php-${PHP_VERSION}.tar.gz https://www.php.net/get/php-${PHP_VERSION}.tar.gz/from/this/mirror && \
+RUN wget https://www.php.net/distributions/php-${PHP_VERSION}.tar.gz && \
     gzip -d php-${PHP_VERSION}.tar.gz && \
     tar xvf php-${PHP_VERSION}.tar && \
     rm php-${PHP_VERSION}.tar
