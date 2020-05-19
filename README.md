@@ -1,5 +1,7 @@
 # Alpine Linux, Apache2, PHP7 Docker Stack
 
+![build](https://github.com/duy0611/alpine-php-apache-stack/workflows/Build/badge.svg)
+
 The repository contains Dockerfile for alpine-apache-php stack.
 
 Some information about the dockerfile:
