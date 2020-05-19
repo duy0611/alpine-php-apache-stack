@@ -1,0 +1,14 @@
+version: '3.5'
+
+services:
+  webserver:
+    image: alpine-php7-apache2
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 80:80
+    volumes:
+      - ./logs/apache2/:/usr/local/apache2/logs/
+      - ./logs/php7/:/usr/local/php7/var/log/
+      - ./www_data/:/usr/local/apache2/htdocs/
